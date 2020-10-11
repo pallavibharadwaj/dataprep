@@ -64,3 +64,33 @@ class InvalidParameterError(Exception):
 
     def __str__(self) -> str:
         return f"the parameter {self.param} is invalid, refer info method"
+
+
+class MissingAuthParameter(Exception):
+    """
+    The parameters used for Authorization are invalid
+    """
+
+    param: str
+
+    def __init__(self, param: str) -> None:
+        super().__init__()
+        self.param = param
+
+    def __str__(self) -> str:
+        return f'Missing a required authorization parameter "{self.param}"'
+
+
+class InvalidAuthParameter(Exception):
+    """
+    The parameters used for Authorization are invalid
+    """
+
+    param: str
+
+    def __init__(self, param: str) -> None:
+        super().__init__()
+        self.param = param
+
+    def __str__(self) -> str:
+        return f"Invalid parameters used - authorization requires only {self.param}."
